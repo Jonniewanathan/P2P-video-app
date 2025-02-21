@@ -44,7 +44,7 @@ jobs:
       - name: Build Angular app
         run: |
           cd my-angular-app
-          npm run build -- --prod
+          npm run build -- --production
 
       - name: Install dependencies (Backend)
         run: |
