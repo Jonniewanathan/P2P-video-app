@@ -2,7 +2,7 @@ export const config = {
   production: true,
   apiUrl: "${API_URL}",
   wsUrl: "${WS_URL}",
-  firebaseConfig: {
+  firebase: {
     apiKey: "${FIREBASE_API_KEY}",
     authDomain: "${FIREBASE_AUTH_DOMAIN}",
     projectId: "${FIREBASE_PROJECT_ID}",
