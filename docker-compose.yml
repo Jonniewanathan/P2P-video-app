@@ -17,6 +17,7 @@ services:
       - FIREBASE_PRIVATE_KEY=${FIREBASE_PRIVATE_KEY}
       - API_URL=${API_URL}
       - WS_URL=${WS_URL}
+      - CORS_URL=&{CORS_URL}
     ports:
       - "5000:5000"
     networks:

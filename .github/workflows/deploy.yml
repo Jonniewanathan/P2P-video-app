@@ -74,6 +74,10 @@ jobs:
       - name: Write key.pem
         run: |
           echo "${{ secrets.KEY_PEM }}" > my-app-server/certs/key.pem
+          
+      - name: Write firebase-admin-key.json
+        run: |
+          echo "${{ secrets.FIREBASE_PRIVATE_KEY }}" > my-app-server/firebase-admin-key.json
 
       - name: Build and deploy Docker containers
         run: |
@@ -82,3 +86,4 @@ jobs:
           FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
           API_URL: ${{ secrets.API_URL }}
           WS_URL: ${{ secrets.WS_URL }}
+          CORS_URL: ${{ secrets.CORS_URL }}
