@@ -44,6 +44,7 @@ certs/
 
 # Angular-specific ignores (my-angular-app)
 my-angular-app/dist/
+my-angular-app/firebase-admin-key.json
 my-angular-app/tmp/
 my-angular-app/node_modules/
 my-angular-app/*.ngsummary.json
@@ -55,6 +56,7 @@ my-angular-app/.angular/
 
 # Node.js-specific ignores (my-app-server)
 my-app-server/node_modules/
+my-app-server/firebase-admin-key.json
 my-app-server/npm-debug.log
 my-app-server/yarn-debug.log
 my-app-server/yarn-error.log

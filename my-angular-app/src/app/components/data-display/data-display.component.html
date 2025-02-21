@@ -1,0 +1,16 @@
+<h1>Data Display Page</h1>
+<button (click)="logout()">Logout</button>
+<ul>
+  @for (contact of contacts; track contact){
+    <li (click)="startCall(contact.userId)">
+      {{ contact.name }} ({{ contact.email }})
+    </li>
+  }
+
+</ul>
+<video #localVideo autoplay [muted]="true"></video>
+<video #remoteVideo autoplay></video>
+<div>
+  <button (click)="toggleMic()">{{ isMicMuted ? 'Unmute Mic' : 'Mute Mic' }}</button>
+  <button (click)="toggleCamera()">{{ isCameraOff ? 'Turn Camera On' : 'Turn Camera Off' }}</button>
+</div>
