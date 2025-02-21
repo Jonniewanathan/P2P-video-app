@@ -21,13 +21,13 @@ jobs:
         run: |
           mkdir -p my-angular-app/certs
 
-          - name: Write cert.pem
-            run: |
-              echo "${{ secrets.CERT_PEM }}" > my-angular-app/certs/cert.pem
+      - name: Write cert.pem
+        run: |
+          echo "${{ secrets.CERT_PEM }}" > my-angular-app/certs/cert.pem
 
-          - name: Write key.pem
-            run: |
-              echo "${{ secrets.KEY_PEM }}" > my-angular-app/certs/key.pem
+      - name: Write key.pem
+        run: |
+          echo "${{ secrets.KEY_PEM }}" > my-angular-app/certs/key.pem
 
       - name: Install dependencies (Frontend)
         run: |
