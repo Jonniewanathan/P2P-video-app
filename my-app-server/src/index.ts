@@ -18,9 +18,10 @@ dotenv.config();
 //     messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
 //     appId: process.env.FIREBASE_APP_ID,
 // };
+const serviceAccount = JSON.parse(process.env.FIREBASE_PRIVATE_KEY as string);
 
 admin.initializeApp({
-    credential: admin.credential.cert(process.env.FIREBASE_PRIVATE_KEY as ServiceAccount),
+    credential: admin.credential.cert(serviceAccount as ServiceAccount),
 });
 
 const db = admin.firestore();
