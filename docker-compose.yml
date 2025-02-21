@@ -1,0 +1,17 @@
+services:
+  angular:
+    build: ./my-angular-app
+    ports:
+      - "443:443"
+    networks:
+      - my-app-network
+  server:
+    build: ./my-app-server
+    ports:
+      - "5000:5000"
+    networks:
+      - my-app-network
+
+networks:
+  my-app-network:
+    driver: bridge
