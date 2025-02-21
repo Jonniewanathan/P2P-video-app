@@ -63,3 +63,4 @@ my-app-server/yarn-error.log
 my-app-server/.pnpm-debug.log
 my-app-server/logs/
 my-app-server/*.log
+/my-angular-app/src/assets/config.json

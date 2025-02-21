@@ -10,5 +10,5 @@ FROM nginx:alpine
 COPY --from=build /app/dist/my-angular-app /usr/share/nginx/html
 COPY ./certs /etc/nginx/certs
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 443
+EXPOSE 443 80
 CMD ["nginx", "-g", "daemon off;"]

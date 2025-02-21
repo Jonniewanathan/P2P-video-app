@@ -1,8 +1,14 @@
 services:
   angular:
     build: ./my-angular-app
+    environment:
+      - FIREBASE_API_KEY=${FIREBASE_API_KEY}
+      - FIREBASE_AUTH_DOMAIN=${FIREBASE_AUTH_DOMAIN}
+      - API_URL=${API_URL}
+      - WS_URL=${WS_URL}
     ports:
       - "443:443"
+      - "80:80"
     networks:
       - my-app-network
   server:
