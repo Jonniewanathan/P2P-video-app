@@ -16,6 +16,18 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 22
+          
+      - name: Create certs directory
+        run: |
+          mkdir -p my-angular-app/certs
+
+          - name: Write cert.pem
+            run: |
+              echo "${{ secrets.CERT_PEM }}" > my-angular-app/certs/cert.pem
+
+          - name: Write key.pem
+            run: |
+              echo "${{ secrets.KEY_PEM }}" > my-angular-app/certs/key.pem
 
       - name: Install dependencies (Frontend)
         run: |
@@ -50,6 +62,18 @@ jobs:
         run: |
           cd my-app-server
           npm install
+          
+      - name: Create certs directory
+        run: |
+          mkdir -p my-app-server/certs
+
+          - name: Write cert.pem
+            run: |
+              echo "${{ secrets.CERT_PEM }}" > my-app-server/certs/cert.pem
+
+          - name: Write key.pem
+            run: |
+              echo "${{ secrets.KEY_PEM }}" > my-app-server/certs/key.pem
 
       - name: Build and deploy Docker containers
         run: |
