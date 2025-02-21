@@ -75,10 +75,12 @@ jobs:
         run: |
           echo "${{ secrets.KEY_PEM }}" > my-app-server/certs/key.pem
           
-      - name: Write firebase-admin-key.json
-        run: |
-          echo "${{ secrets.FIREBASE_PRIVATE_KEY }}" > my-app-server/firebase-admin-key.json
-          echo "$(<my-app-server/firebase-admin-key.json )"
+      - name: create-json
+        id: create-json
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "my-app-server/firebase-admin-key.json"
+          json: ${{ secrets.FIREBASE_PRIVATE_KEY }}
 
       - name: Build and deploy Docker containers
         run: |
