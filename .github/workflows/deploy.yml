@@ -21,6 +21,11 @@ jobs:
         run: |
           cd my-angular-app
           npm install
+          
+      - name: Make replace-env.sh executable
+        run: |
+          cd my-angular-app
+          chmod +x replace-env.sh
 
       - name: Replace placeholders in environment.prod.ts
         run: |
