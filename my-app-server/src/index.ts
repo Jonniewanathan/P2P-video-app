@@ -25,7 +25,12 @@ admin.initializeApp({
 
 const db = admin.firestore();
 const app = express();
-const allowedOrigins = ['https://192.168.1.145', 'https://192.168.1.145:443'];
+const allowedOrigins = [
+    process.env.CORS_URL,
+    process.env.CORS_URL + ':443',
+    'https://192.168.1.145',
+    'https://192.168.1.145:443'
+];
 
 app.use(
     cors({
