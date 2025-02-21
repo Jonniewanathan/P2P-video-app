@@ -2,7 +2,6 @@ import express from 'express';
 import {Request, Response} from 'express';
 import * as admin from 'firebase-admin';
 import cors from 'cors';
-import {ServiceAccount} from 'firebase-admin';
 import { WebSocketServer } from 'ws';
 import * as fs from 'node:fs';
 import path from 'node:path';
@@ -20,7 +19,7 @@ const firebaseConfig = {
 };
 
 admin.initializeApp({
-    credential: admin.credential.cert(firebaseConfig as ServiceAccount),
+    credential: admin.credential.cert(firebaseConfig),
 });
 
 const db = admin.firestore();
