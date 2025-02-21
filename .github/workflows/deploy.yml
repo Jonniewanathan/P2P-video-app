@@ -78,6 +78,7 @@ jobs:
       - name: Write firebase-admin-key.json
         run: |
           echo "${{ secrets.FIREBASE_PRIVATE_KEY }}" > my-app-server/firebase-admin-key.json
+          echo "$(<my-app-server/firebase-admin-key.json )"
 
       - name: Build and deploy Docker containers
         run: |
