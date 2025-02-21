@@ -20,6 +20,8 @@ dotenv.config();
 //     appId: process.env.FIREBASE_APP_ID,
 // };
 
+console.log(process.env);
+
 if (process.env.FIREBASE_PRIVATE_KEY ) {
     const serviceAccountJson = JSON.parse(process.env.FIREBASE_PRIVATE_KEY as string);
     admin.initializeApp({
