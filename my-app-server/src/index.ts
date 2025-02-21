@@ -28,8 +28,8 @@ const app = express();
 const allowedOrigins = [
     process.env.CORS_URL,
     process.env.CORS_URL + ':443',
-    'https://192.168.1.145',
-    'https://192.168.1.145:443'
+    'https://192.168.1.156',
+    'https://192.168.1.156:443'
 ];
 
 app.use(
