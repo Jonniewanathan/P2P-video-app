@@ -21,19 +21,9 @@ dotenv.config();
 // };
 
 console.log(process.env);
-
-if (process.env.FIREBASE_PRIVATE_KEY ) {
-    const serviceAccountJson = JSON.parse(process.env.FIREBASE_PRIVATE_KEY as string);
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccountJson as ServiceAccount),
-    });
-} else {
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount as ServiceAccount),
-    });
-}
-
-
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount as ServiceAccount),
+});
 
 const db = admin.firestore();
 const app = express();
