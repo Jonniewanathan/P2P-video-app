@@ -1,10 +1,10 @@
-FROM node:22 as build
+FROM node:22-alpine as build
 LABEL authors="Jonathan"
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build
+RUN npm run build-prod
 
 FROM nginx:alpine
 COPY --from=build /app/dist/my-angular-app /usr/share/nginx/html

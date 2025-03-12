@@ -29,4 +29,8 @@ export class LoginComponent {
       });
   }
 
+  goToResister(): void {
+    this.router.navigate(['/register']);
+  }
+
 }

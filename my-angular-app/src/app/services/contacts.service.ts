@@ -10,7 +10,7 @@ import {config} from '../../environments/environment';
 export class ContactsService {
   private apiUrl = config.apiUrl;
 
-  constructor(private http: HttpClient,  private afAuth: AngularFireAuth) {}
+  constructor(private http: HttpClient, private afAuth: AngularFireAuth) {}
 
   getContacts(): Observable<any> {
     return from(this.afAuth.currentUser).pipe(

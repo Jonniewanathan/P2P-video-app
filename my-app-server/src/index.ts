@@ -7,22 +7,13 @@ import * as fs from 'node:fs';
 import path from 'node:path';
 import * as https from 'node:https';
 import dotenv from 'dotenv';
-import {ServiceAccount} from 'firebase-admin';
-import * as serviceAccount from '../firebase-admin-key.json';
+import {auth, credential} from 'firebase-admin';
+import UserRecord = auth.UserRecord;
+import applicationDefault = credential.applicationDefault;
 dotenv.config();
 
-// const firebaseConfig = {
-//     apiKey: process.env.FIREBASE_API_KEY,
-//     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-//     projectId: process.env.FIREBASE_PROJECT_ID,
-//     storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-//     messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-//     appId: process.env.FIREBASE_APP_ID,
-// };
-
-console.log(process.env);
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount as ServiceAccount),
+    credential: applicationDefault(),
 });
 
 const db = admin.firestore();
@@ -78,6 +69,11 @@ const data = {
             { urls: 'stun:stun.l.google.com:19302' }
         ],
     },
+    contacts:[
+        {
+            id: 1
+        }
+    ]
 };
 
 // // Add a new document with a generated ID
@@ -170,6 +166,29 @@ app.get('/contacts/:userId', async (req, res) => {
     } catch (error) {
         console.error('Error fetching contacts:', error);
         res.status(500).send('Internal server error');
+    }
+});
+
+app.post('/register', async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        // Create user with Firebase Authentication
+        console.log('Registering: ' + email);
+        admin.auth().createUser({
+            email: email,
+            password: password,
+        }).then((userRecord: UserRecord) => {
+            db.collection('users').doc(userRecord.uid).set({
+                email,
+                name: email.split('@')[0], // Use the email prefix as the name
+            });
+            res.status(201).json({ message: 'User registered successfully', userId: userRecord.uid });
+        });
+        
+    } catch (error) {
+        console.error('Registration error:', error);
+        res.status(500).json({ error: 'Registration failed' });
     }
 });
 
