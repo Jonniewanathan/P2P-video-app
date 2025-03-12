@@ -86,6 +86,8 @@ jobs:
         run: |
           docker-compose up --build -d
         env:
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
           FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
           API_URL: ${{ secrets.API_URL }}
           WS_URL: ${{ secrets.WS_URL }}
